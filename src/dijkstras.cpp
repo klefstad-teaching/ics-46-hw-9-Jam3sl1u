@@ -10,13 +10,13 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
     int n = G.numVertices;
 
     vector<int> distance(n, INF);
-    distance[source] = 0;
+    previous.assign(n, -1);
     vector<bool> visited(n, false);
 
-    previous[source] = -1;
 
-    priority_queue<pair<int, int>> pq;
-    pq.push({source, 0});
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    pq.push({0, source});
+    distance[source] = 0;
 
     while (!pq.empty()) {
         int u = pq.top().second;
@@ -25,20 +25,25 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
             continue;
         }
         visited[u] = true;
-        if (u >= 0 && u < G.numVertices) {
-            for (Edge neighbor : G[u]) {
-                int v = neighbor.dst;
-                int weight = neighbor.weight;
-                if (!visited[v] && distance[u] != INF && distance[u] + weight < distance[v]) {
-                    distance[v] = distance[u] + weight;
-                    previous[v] = u;
-                    pq.push({v, distance[v]});
-                }
+        for (Edge neighbor : G[u]) {
+            int v = neighbor.dst;
+            int weight = neighbor.weight;
+            if (!visited[v] && distance[u] != INF && distance[u] + weight < distance[v]) {
+                distance[v] = distance[u] + weight;
+                previous[v] = u;
+                pq.push({distance[v], v});
             }
         }
     }
+    // for (int i = 0; i < G.numVertices; ++i) {
+    //     cout << "Vertex " << i << ": Distance = " << distance[i] << endl;
+    // }
+    // for (int i : distance) {
+    //     cout << i << " ";
+    // }
     return distance;
 }
+    
 
 vector<int> extract_shortest_path(const vector<int>& distances, const vector<int>& previous, int destination) {
     vector<int> shortest_path;

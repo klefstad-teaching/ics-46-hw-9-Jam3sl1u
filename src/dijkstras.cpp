@@ -1,6 +1,8 @@
 #include "dijkstras.h"
 #include <vector>
 #include <queue>
+#include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -26,7 +28,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
         for (Edge neighbor : G[u]) {
             int v = neighbor.dst;
             int weight = neighbor.weight;
-            if (visited[v] != INF && distance[u] + weight < distance[v]) {
+            if (!visited[v] && distance[u] + weight < distance[v] && distance[u] != INF) {
                 distance[v] = distance[u] + weight;
                 previous[v] = u;
                 pq.push({v, distance[v]});

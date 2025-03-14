@@ -14,7 +14,7 @@ TEST(Dijsktras, test1) {
   EXPECT_EQ(distances, expected);
 
   vector<int> shortest_path = extract_shortest_path(distances, previous, 1);
-  vector<int> expected_path = {1, 0};
+  vector<int> expected_path = {0, 1};
   EXPECT_EQ(shortest_path, expected_path);
 
   int total = distances[1];

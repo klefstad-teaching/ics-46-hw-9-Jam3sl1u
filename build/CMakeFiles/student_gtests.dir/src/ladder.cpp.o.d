@@ -1,5 +1,5 @@
-CMakeFiles/ladder_main.dir/src/ladder_main.cpp.o: \
- /home/jameszl1/ICS46/HW9/ics-46-hw-9-Jam3sl1u/src/ladder_main.cpp \
+CMakeFiles/student_gtests.dir/src/ladder.cpp.o: \
+ /home/jameszl1/ICS46/HW9/ics-46-hw-9-Jam3sl1u/src/ladder.cpp \
  /usr/include/stdc-predef.h \
  /home/jameszl1/ICS46/HW9/ics-46-hw-9-Jam3sl1u/src/ladder.h \
  /usr/include/c++/11/iostream \

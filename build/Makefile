@@ -260,6 +260,7 @@ src/ladder.o: src/ladder.cpp.o
 # target to build an object file
 src/ladder.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ladder_main.dir/build.make CMakeFiles/ladder_main.dir/src/ladder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_gtests.dir/build.make CMakeFiles/student_gtests.dir/src/ladder.cpp.o
 .PHONY : src/ladder.cpp.o
 
 src/ladder.i: src/ladder.cpp.i
@@ -268,6 +269,7 @@ src/ladder.i: src/ladder.cpp.i
 # target to preprocess a source file
 src/ladder.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ladder_main.dir/build.make CMakeFiles/ladder_main.dir/src/ladder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_gtests.dir/build.make CMakeFiles/student_gtests.dir/src/ladder.cpp.i
 .PHONY : src/ladder.cpp.i
 
 src/ladder.s: src/ladder.cpp.s
@@ -276,6 +278,7 @@ src/ladder.s: src/ladder.cpp.s
 # target to generate assembly for a file
 src/ladder.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ladder_main.dir/build.make CMakeFiles/ladder_main.dir/src/ladder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/student_gtests.dir/build.make CMakeFiles/student_gtests.dir/src/ladder.cpp.s
 .PHONY : src/ladder.cpp.s
 
 src/ladder_main.o: src/ladder_main.cpp.o

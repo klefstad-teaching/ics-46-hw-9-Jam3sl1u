@@ -2,7 +2,7 @@
 #include <queue>
 #include <vector>
 #include <set>
-#include <math>
+#include <cmath>
 #define my_assert(e) {cout << #e << ((e) ? " passed": " failed") << endl;}
 
 using namespace std;
@@ -90,7 +90,7 @@ void load_words(set<string> & word_list, const string& file_name) {
 
 void print_word_ladder(const vector<string>& ladder) {
     for(string word : ladder) {
-        if (word == ladder.back) {
+        if (word == ladder.back()) {
             cout << word << endl;
         } else {
             cout << word << " -> ";

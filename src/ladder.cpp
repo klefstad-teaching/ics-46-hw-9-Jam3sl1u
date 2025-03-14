@@ -2,6 +2,7 @@
 #include <queue>
 #include <vector>
 #include <set>
+#include <math>
 #define my_assert(e) {cout << #e << ((e) ? " passed": " failed") << endl;}
 
 using namespace std;
@@ -10,8 +11,41 @@ void error(string word1, string word2, string msg) {
     cout << "Error: " << msg << ": " << word1 << " - " << word2;
 }
 
-bool edit_distance_within(const std::string& str1, const std::string& str2, int d);
-bool is_adjacent(const string& word1, const string& word2);
+bool edit_distance_within(const std::string& str1, const std::string& str2, int d) {
+    int str1_size = str1.size();
+    int str2_size = str2.size();
+    if (abs(str1_size - str2_size) > d) return false;
+    int edit_counter = 0;
+    int idx_str1 = 0;
+    int idx_str2 = 0;
+    while (idx_str1 < str1_size && idx_str2 < str2_size) {
+        if (str1[idx_str1] != str2[idx_str2]) {
+            edit_counter++;
+            if (str1_size == str2_size) {
+                idx_str1++;
+                idx_str2++;
+            } else if (str1_size > str2_size) {
+                idx_str1++;
+            } else {
+                idx_str2++;
+            }
+        } else {
+            idx_str1++;
+            idx_str2++;
+        }
+    }
+    if (str1_size > str2_size) {
+        edit_counter += str1_size - idx_str1;
+    } else if (str2_size > str1_size) {
+        edit_counter += str2_size - idx_str2;
+    }
+    return edit_counter <= d;
+}
+
+bool is_adjacent(const string& word1, const string& word2) {
+    return edit_distance_within(word1, word2, 1);
+}
+
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& word_list) {
     if (begin_word == end_word) {
         error(begin_word, end_word, "Same Word");
